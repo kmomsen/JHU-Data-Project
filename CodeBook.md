@@ -11,7 +11,7 @@ In addition to the variables detailed in the _features_info.txt_ for the data se
 - bodyaccXYZ#
 - bodygyroXYZ#
 
-For the means_by_subject_activity.txt data set, the mean of a subset of the signals below was found. To make it clear that this data set gives the mean value of these signals, ".mean" was concatenated to end of the variable name.
+For the _means_by_subject_activity.txt_ data set, the mean of a subset of the signals below was found. To make it clear that this data set gives the mean value of these signals, ".mean" was concatenated to end of the each variable name.
 
 Lastly, the number of the test subject (subjectnumber) and the activity for the corresponding measurement (activityname) are included in the data sets.
 ***
