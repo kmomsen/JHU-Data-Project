@@ -5,12 +5,27 @@ Final project submission for JHU Getting and Cleaning Data Course
 [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
 
 ## Repository files include:
-- README.md
-- CodeBook.md: 
-- run_analysis.R script: This script downloads the data provided by [1] and manipulates the data according to the course assignment
-- full_dataset.txt: A merged dataset of the train and test data from [1], output by run_analysis.R. This includes data from X_test.txt, X_train.txt, all the Inertial Signals data for both test and train data set. Each measurement includes the corresponding test subject number and activity for which the measurement was taken.
-- dataset_means_and_stds.txt: A subset of full_dataset.txt that only includes mean and standard deviation variables (as well as the corresponding test subject and activity that the measurement was taken for). This is output by run_analysis.R.
-- means_by_subject_activty.txt: A summary of dataset_means_and_stds.txt where the mean was taken for each variable by test subject and activity. This is output by run_analysis.R.
+- _README.md_
+- _CodeBook.md_: Provides information on all the variables in the data set
+- _run_analysis.R_ script: This script downloads the data provided by [1] and manipulates the data according to the course assignment
+- _full_dataset.txt_: A merged dataset of the train and test data from [1], output by run_analysis.R. This includes data from X_test.txt, X_train.txt, all the Inertial Signals data for both test and train data set. Each measurement includes the corresponding test subject number and activity for which the measurement was taken.
+- _dataset_means_and_stds.txt_: A subset of full_dataset.txt that only includes mean and standard deviation variables (as well as the corresponding test subject and activity that the measurement was taken for). This is output by run_analysis.R.
+- _means_by_subject_activity.txt_: A summary of dataset_means_and_stds.txt where the mean was taken for each variable by test subject and activity. This is output by run_analysis.R. 
+
+## What run_analysis.R does:
+- This R script downloads the [data set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) to the user's C:/temp/ directory (directory is created if it doesn't already exist) and then unzips the file to the same directory. The features.txt file is read in, which provides the variable names for the X_test.txt and X_train.txt files, and the variable names are manipulated so as to be proper R column names. The activity_labels.txt file is read into R next, which provides the key for activity number and corresponding activity name, which will be used to interpret the y_test.txt and y_train.txt files. 
+- The folloing procedure was executed for both the test and train data sets (here test is used as an example)
+  + The X_test.txt, y_test.txt, subject_test.txt are read into R as well as all nine of the Inertial Signals data files. 
+  + X_test column names were renamed with the manipulated strings found in the features.txt file
+  + y_test.txt data was joined with the activity_labels.txt data so that y_test has the corresponding activity names for the activity numbers. 
+  + Inertial Signals data (ex. body_acc_x_test.txt) columns were renamed to be the measured signal name (for this example, "bodyaccx") and a number (1 - 128, as these are 128 element vectors, according to the README.txt from [1])
+  + All the test data is then joined together with cbind (X_test, y_test, subject_test, and all nine Inertial Signals)
+- Once the test data and train data were completely assembled as detailed above, these two data sets were merged with rbind. The output of this is the _full_dataset.txt_ file.
+- The full dataset was then subset by looking for variables with "mean" and "std" in the name (as well as including the test subject number and the activity name for each of the measurements. The output of this is the _dataset_means_and_std.txt_ file.
+- The above data set was then summarized, for we are only interested in the average value of each of the variables by the test subject and the activity. The output of this is the _means_by_subject_activity.txt_ file. Note that ".mean" has been added to all column names from _dataset_means_and_stds.txt_ to make it clear that the average was taken.
+- Lastly, the script writes the _full_dataset.txt_, the _dataset_means_and_std.txt_, and the _means_by_subject_activity.txt_ datasets to the user's directory.
+
+***
 
 ### From the README.txt provided with the data set from [1], we are provided the following information about the dataset:
 
