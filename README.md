@@ -8,9 +8,11 @@ Final project submission for JHU Getting and Cleaning Data Course
 - README.md
 - CodeBook.md: 
 - run_analysis.R script: This script downloads the data provided by [1] and manipulates the data according to the course assignment
-- 
+- full_dataset.txt: A merged dataset of the train and test data from [1], output by run_analysis.R. This includes data from X_test.txt, X_train.txt, all the Inertial Signals data for both test and train data set. Each measurement includes the corresponding test subject number and activity for which the measurement was taken.
+- dataset_means_and_stds.txt: A subset of full_dataset.txt that only includes mean and standard deviation variables (as well as the corresponding test subject and activity that the measurement was taken for). This is output by run_analysis.R.
+- means_by_subject_activty.txt: A summary of dataset_means_and_stds.txt where the mean was taken for each variable by test subject and activity. This is output by run_analysis.R.
 
-### From [1] README.txt, we are provided the following information about the dataset:
+### From the README.txt provided with the data set from [1], we are provided the following information about the dataset:
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
